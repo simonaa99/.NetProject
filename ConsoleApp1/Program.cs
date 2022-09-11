@@ -11,8 +11,8 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             using TakmicenjeContext context = new TakmicenjeContext();
-            var u =context.Ucesnics.Include(u=>u.Mesto).Include(u=>u.Tim).FirstOrDefault();
-            Console.WriteLine(u.ToString());
+            //var u =context.Ucesnics.Include(u=>u.Mesto).Include(u=>u.Tim).FirstOrDefault();
+            //Console.WriteLine(u.ToString());
             //context.Takmicenja.Where(s => s.Tema == "Inovacija bankarstva").ToList().ForEach(s => Console.WriteLine(s));
             //Fakultet f1 = new Fakultet { NazivFakulteta = "FON" };
             //Fakultet f2 = new Fakultet();
@@ -48,22 +48,22 @@ namespace ConsoleApp1
             //context.Add(t5);
             //context.Add(t6);
 
-            //Ucesnik u1 = new Ucesnik { Ime = "Milan", Prezime = "Lakic", JMBG = "1407002154011", MestoId = 4, GodinaStudija = 2, TimId = 1 };
-            //Ucesnik u2 = new Ucesnik { Ime = "Ana", Prezime = "Miric", JMBG = "0205001321456", MestoId = 2, GodinaStudija = 3, TimId = 2 };
-            //Ucesnik u3 = new Ucesnik { Ime = "Jovan", Prezime = "Petrovic", JMBG = "0607000214785", MestoId = 3, GodinaStudija = 1, TimId = 2 };
-            //Ucesnik u4 = new Ucesnik { Ime = "Lidija", Prezime = "Dudic", JMBG = "1903002456987", MestoId = 1, GodinaStudija = 2, TimId = 4 };
-            //Ucesnik u5 = new Ucesnik { Ime = "Luka", Prezime = "Popovic", JMBG = "0112999874563", MestoId = 2, GodinaStudija = 4, TimId = 2 };
-            //Ucesnik u6 = new Ucesnik { Ime = "Bojana", Prezime = "Sakic", JMBG = "0101003654785", MestoId = 1, GodinaStudija = 1, TimId = 5 };
+            Ucesnik u1 = new Ucesnik { Ime = "Milan", Prezime = "Lakic", JMBG = "1407002154011",Kontakt = "0605412541", MestoId = 4, GodinaStudija = 2, TimId = 1 };
+            Ucesnik u2 = new Ucesnik { Ime = "Ana", Prezime = "Miric", JMBG = "0205001321456", Kontakt = "0621456321", MestoId = 2, GodinaStudija = 3, TimId = 2 };
+            Ucesnik u3 = new Ucesnik { Ime = "Jovan", Prezime = "Petrovic", JMBG = "0607000214785", Kontakt = "061478963", MestoId = 3, GodinaStudija = 1, TimId = 2 };
+            Ucesnik u4 = new Ucesnik { Ime = "Lidija", Prezime = "Dudic", JMBG = "1903002456987", Kontakt = "0614567892", MestoId = 1, GodinaStudija = 2, TimId = 4 };
+            Ucesnik u5 = new Ucesnik { Ime = "Luka", Prezime = "Popovic", JMBG = "0112999874563", Kontakt = "0612364100", MestoId = 2, GodinaStudija = 4, TimId = 2 };
+            Ucesnik u6 = new Ucesnik { Ime = "Bojana", Prezime = "Sakic", JMBG = "0101003654785", Kontakt = "0645123647", MestoId = 1, GodinaStudija = 1, TimId = 4 };
 
 
 
-            //context.Add(u1);
-            //context.Add(u2);
-            //context.Add(u3);
-            //context.Add(u4);
-            //context.Add(u5);
-            //context.Add(u6);
-
+            context.Add(u1);
+            context.Add(u2);
+            context.Add(u3);
+            context.Add(u4);
+            context.Add(u5);
+            context.Add(u6);
+            context.SaveChanges();
             //Administrator a = new Administrator {Ime = "Petar", Prezime = "Petrovic", Username ="pera123", Password = "pera" };
             //context.Add(a);
             List<Takmicenje> t = context.Takmicenjes.Include(c => c.Statistike).ThenInclude(s=>s.Tim).ToList();
@@ -79,9 +79,9 @@ namespace ConsoleApp1
                 //}
                }
 
-            var tim = context.Ucesnics.Where(t => t.OsobaId == 1).FirstOrDefault();
-            context.Remove(tim);
-            context.SaveChanges();
+            //var tim = context.Ucesnics.Where(t => t.OsobaId == 1).FirstOrDefault();
+            //context.Remove(tim);
+            //context.SaveChanges();
 
             //var persons = context.Osobas.Include(o=>o.).ToList();
 

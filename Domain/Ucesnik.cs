@@ -10,6 +10,7 @@ namespace Domain
     {
         public String JMBG { get; set; }
         public int GodinaStudija { get; set; }
+        public String Kontakt { get; set; }
         public int MestoId { get; set; }
         public Mesto Mesto { get; set; }
         public int TimId { get; set; }
