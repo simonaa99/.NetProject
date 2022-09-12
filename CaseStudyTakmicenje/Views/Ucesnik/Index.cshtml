@@ -1,0 +1,33 @@
+﻿@using Domain
+@model List<Ucesnik>
+
+<p><a href="Ucesnik/Create">Kreiraj novog ucesnika</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Godina studija</th>
+            <th>Mesto</th>
+            <th>Tim</th>
+            <th>Ažuriraj</th>
+            <th>Obriši</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Ucesnik item in Model)
+        {
+<tr>
+    <td>@item.Ime</td>
+    <td>@item.Prezime</td>
+    <td>@item.GodinaStudija</td>
+    <td>@item.Mesto.NazivMesta</td>
+    <td>@item.Tim.NazivTima</td>
+    <td><a href="Ucesnik/Edit/@item.OsobaId">Ažuriraj</a></td>
+    <td><a href="Ucesnik/Delete/@item.OsobaId">Obrisi</a></td>
+</tr>}
+
+
+    </tbody>
+
+</table>

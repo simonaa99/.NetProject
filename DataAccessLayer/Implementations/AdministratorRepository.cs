@@ -49,9 +49,16 @@ namespace DataAccessLayer.Implementations
             return context.Osobas.Single(c => c.OsobaId == entity.OsobaId);
         }
 
+        public Administrator SearchByUserNamePassword(string username, string password)
+        {
+            return context.Administartors.SingleOrDefault(a => a.Username == username && a.Password == password);
+        }
+
         public void Update(Osoba entity)
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

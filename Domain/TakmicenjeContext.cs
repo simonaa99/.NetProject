@@ -13,6 +13,7 @@ namespace Domain
         public DbSet<Mesto> Mestos { get; set; }
         public DbSet<Tim> Tims { get; set; }
         public DbSet<Osoba> Osobas { get; set; }
+        public DbSet<Administrator> Administartors { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
