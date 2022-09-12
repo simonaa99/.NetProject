@@ -60,5 +60,87 @@ namespace CaseStudyTakmicenje.Controllers
             unitOfWork.Save();
             return RedirectToAction("Index");
         }
+
+        public IActionResult Edit(int id)
+        {
+            UcesnikViewModel model = new UcesnikViewModel();
+
+            Ucesnik s = (Ucesnik)unitOfWork.UcesnikRepository.SearchById(new Ucesnik { OsobaId = id });
+
+            model.Ime = s.Ime;
+            model.Prezime = s.Prezime;
+            model.JMBG = s.JMBG;
+            model.GodinaStudija = s.GodinaStudija;
+            model.Kontakt = s.Kontakt;
+            model.MestoId = s.MestoId;
+            var mesta = unitOfWork.MestoRepository.GetAll();
+            model.Mesta = mesta.Select(m => new SelectListItem(m.NazivMesta, m.MestoId.ToString())).ToList();
+            model.TimId = s.TimId;
+            var timovi = unitOfWork.TimRepository.GetAll();
+            model.Timovi = timovi.Select(t => new SelectListItem(t.NazivTima, t.TimId.ToString())).ToList();
+
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, UcesnikViewModel ucesnik)
+        {
+            unitOfWork.UcesnikRepository.Update(new Ucesnik
+            {
+                OsobaId = id,
+                Ime = ucesnik.Ime,
+                Prezime = ucesnik.Prezime,
+                JMBG = ucesnik.JMBG,
+                GodinaStudija = ucesnik.GodinaStudija,
+                Kontakt = ucesnik.Kontakt,
+                MestoId = ucesnik.MestoId,
+                TimId = ucesnik.TimId,
+            });
+            unitOfWork.Save();
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            UcesnikViewModel model = new UcesnikViewModel();
+
+            Ucesnik s = (Ucesnik)unitOfWork.UcesnikRepository.SearchById(new Ucesnik { OsobaId = id });
+
+            model.Ime = s.Ime;
+            model.Prezime = s.Prezime;
+            model.JMBG = s.JMBG;
+            model.GodinaStudija = s.GodinaStudija;
+            model.Kontakt = s.Kontakt;
+            model.MestoId = s.MestoId;
+            var mesta = unitOfWork.MestoRepository.GetAll();
+            model.Mesta = mesta.Select(m => new SelectListItem(m.NazivMesta, m.MestoId.ToString())).ToList();
+            model.TimId = s.TimId;
+            var timovi = unitOfWork.TimRepository.GetAll();
+            model.Timovi = timovi.Select(t => new SelectListItem(t.NazivTima, t.TimId.ToString())).ToList();
+
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id, UcesnikViewModel ucesnik)
+        {
+            unitOfWork.UcesnikRepository.Delete(new Ucesnik
+            {
+                OsobaId = id,
+                Ime = ucesnik.Ime,
+                Prezime = ucesnik.Prezime,
+                JMBG = ucesnik.JMBG,
+                GodinaStudija = ucesnik.GodinaStudija,
+                Kontakt = ucesnik.Kontakt,
+                MestoId = ucesnik.MestoId,
+                TimId = ucesnik.TimId,
+            });
+            unitOfWork.Save();
+
+            return RedirectToAction("Index");
+        }
     }
 }
