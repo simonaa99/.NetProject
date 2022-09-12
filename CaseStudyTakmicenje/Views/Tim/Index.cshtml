@@ -1,0 +1,28 @@
+﻿@using Domain
+@model List<Tim>
+
+<p><a href="Tim/Create">Kreiraj novi tim</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Naziv tima</th>
+            <th>Fakultet</th>
+            <th>Ažuriraj</th>
+            <th>Obriši</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Tim item in Model)
+        {
+<tr>
+    <td>@item.NazivTima</td>
+    <td>@item.Fakultet</td>
+    <td><a href="Tim/Edit/@item.TimId">Ažuriraj</a></td>
+    <td><a href="Tim/Delete/@item.TimId">Obrisi</a></td>
+</tr>
+}
+
+
+    </tbody>
+
+</table>

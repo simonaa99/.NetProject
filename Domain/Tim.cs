@@ -13,5 +13,10 @@ namespace Domain
         public int FakultetId { get; set; }
         public Fakultet Fakultet { get; set; }
         public List<Statistika> Statistike { get; set; }
+
+        public override string ToString()
+        {
+            return $"{NazivTima}";
+        }
     }
 }
