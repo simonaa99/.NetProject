@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Interfaces
 {
-    public interface ITakmicenjeRepository:IRepository<Takmicenje>
+    public interface ITakmicenjeRepository : IRepository<Takmicenje>
     {
+        object GetAllStatistika();
     }
 }

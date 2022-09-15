@@ -48,6 +48,13 @@ namespace DataAccessLayer.Implementations
             return context.Tims.Single(c => c.TimId == entity.TimId);
         }
 
+        public int SearchByName(string nazivTima)
+        {
+            Tim t = context.Tims.SingleOrDefault(t=> t.NazivTima == nazivTima);
+            int id = t.TimId;
+            return id;
+        }
+
         public void Update(Tim entity)
         {
             context.Entry(entity).State = EntityState.Modified;

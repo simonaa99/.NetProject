@@ -11,11 +11,11 @@ namespace Domain
         public int TakmicenjeId { get; set; }
         public String Tema { get; set; }
         public DateTime DatumOdrzavanja { get; set; }
-        public List<Statistika> Statistike { get; set; }
+        public List<Ucesce> Ucesca { get; set; }
 
         public override string ToString()
         {
-            return $"{Tema} {DatumOdrzavanja}";
+            return $"{Tema} {DatumOdrzavanja.Date}";
         }
     }
 }

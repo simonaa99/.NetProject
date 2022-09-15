@@ -12,7 +12,7 @@ namespace DataAccessLayer.UnitOfWork
         public IUcesnikRepository UcesnikRepository { get; set; }
         public ITimRepository TimRepository { get; set; }
         public ITakmicenjeRepository TakmicenjeRepository { get; set; }
-        public IStatistikaRepository StatistikaRepository { get; set; }
+        public IUcesceRepository UcesceRepository { get; set; }
         public IMestoRepository MestoRepository { get; set; }
         public IFakultetRepository FakultetRepository { get; set; }
         public IOsobaRepository OsobaRepository { get; set; }

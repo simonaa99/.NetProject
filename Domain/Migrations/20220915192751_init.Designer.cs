@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Domain.Migrations
 {
     [DbContext(typeof(TakmicenjeContext))]
-    [Migration("20220911152703_Add_Kontakt_Ucesnik")]
-    partial class Add_Kontakt_Ucesnik
+    [Migration("20220915192751_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -71,36 +71,6 @@ namespace Domain.Migrations
                     b.ToTable("Osoba");
                 });
 
-            modelBuilder.Entity("Domain.Statistika", b =>
-                {
-                    b.Property<int>("TimId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TakmicenjeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DizajnPoeni")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FinansijskaIsplativost")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdejaPoeni")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PrezentacijaPoeni")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UkupniPoeni")
-                        .HasColumnType("int");
-
-                    b.HasKey("TimId", "TakmicenjeId");
-
-                    b.HasIndex("TakmicenjeId");
-
-                    b.ToTable("Statistika");
-                });
-
             modelBuilder.Entity("Domain.Takmicenje", b =>
                 {
                     b.Property<int>("TakmicenjeId")
@@ -137,6 +107,21 @@ namespace Domain.Migrations
                     b.HasIndex("FakultetId");
 
                     b.ToTable("Tim");
+                });
+
+            modelBuilder.Entity("Domain.Ucesce", b =>
+                {
+                    b.Property<int>("TimId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TakmicenjeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TimId", "TakmicenjeId");
+
+                    b.HasIndex("TakmicenjeId");
+
+                    b.ToTable("Ucesce");
                 });
 
             modelBuilder.Entity("Domain.Administrator", b =>
@@ -178,25 +163,6 @@ namespace Domain.Migrations
                     b.ToTable("Ucesnik");
                 });
 
-            modelBuilder.Entity("Domain.Statistika", b =>
-                {
-                    b.HasOne("Domain.Takmicenje", "Takmicenje")
-                        .WithMany("Statistike")
-                        .HasForeignKey("TakmicenjeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Tim", "Tim")
-                        .WithMany("Statistike")
-                        .HasForeignKey("TimId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Takmicenje");
-
-                    b.Navigation("Tim");
-                });
-
             modelBuilder.Entity("Domain.Tim", b =>
                 {
                     b.HasOne("Domain.Fakultet", "Fakultet")
@@ -206,6 +172,25 @@ namespace Domain.Migrations
                         .IsRequired();
 
                     b.Navigation("Fakultet");
+                });
+
+            modelBuilder.Entity("Domain.Ucesce", b =>
+                {
+                    b.HasOne("Domain.Takmicenje", "Takmicenje")
+                        .WithMany("Ucesca")
+                        .HasForeignKey("TakmicenjeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Tim", "Tim")
+                        .WithMany("Ucesca")
+                        .HasForeignKey("TimId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Takmicenje");
+
+                    b.Navigation("Tim");
                 });
 
             modelBuilder.Entity("Domain.Administrator", b =>
@@ -244,12 +229,12 @@ namespace Domain.Migrations
 
             modelBuilder.Entity("Domain.Takmicenje", b =>
                 {
-                    b.Navigation("Statistike");
+                    b.Navigation("Ucesca");
                 });
 
             modelBuilder.Entity("Domain.Tim", b =>
                 {
-                    b.Navigation("Statistike");
+                    b.Navigation("Ucesca");
                 });
 #pragma warning restore 612, 618
         }

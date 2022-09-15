@@ -8,7 +8,7 @@ namespace Domain
     {
         public DbSet<Ucesnik> Ucesnics { get; set; }
         public DbSet<Takmicenje> Takmicenjes { get; set; }
-        public DbSet<Statistika> Statistikas { get; set; }
+        public DbSet<Ucesce> Ucesces { get; set; }
         public DbSet<Fakultet> Fakultets { get; set; }
         public DbSet<Mesto> Mestos { get; set; }
         public DbSet<Tim> Tims { get; set; }
@@ -24,10 +24,10 @@ namespace Domain
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Statistika>().ToTable("Statistika");
-            modelBuilder.Entity<Statistika>(s => s.HasKey(s => new { s.TimId, s.TakmicenjeId }));
-            modelBuilder.Entity<Statistika>().HasOne(s => s.Tim).WithMany(t => t.Statistike).HasForeignKey(s => s.TimId);
-            modelBuilder.Entity<Statistika>().HasOne(s => s.Takmicenje).WithMany(tk => tk.Statistike).HasForeignKey(s => s.TakmicenjeId);
+            modelBuilder.Entity<Ucesce>().ToTable("Ucesce");
+            modelBuilder.Entity<Ucesce>(s => s.HasKey(s => new { s.TimId, s.TakmicenjeId }));
+            modelBuilder.Entity<Ucesce>().HasOne(s => s.Tim).WithMany(t => t.Ucesca).HasForeignKey(s => s.TimId);
+            modelBuilder.Entity<Ucesce>().HasOne(s => s.Takmicenje).WithMany(tk => tk.Ucesca).HasForeignKey(s => s.TakmicenjeId);
 
             modelBuilder.Entity<Ucesnik>().ToTable("Ucesnik");
             modelBuilder.Entity<Ucesnik>().HasOne(u => u.Tim).WithMany().HasForeignKey(u => u.TimId);
@@ -39,7 +39,7 @@ namespace Domain
 
             modelBuilder.Entity<Takmicenje>().ToTable("Takmicenje");
             modelBuilder.Entity<Takmicenje>().HasKey(tk => tk.TakmicenjeId);
-            modelBuilder.Entity<Takmicenje>().HasMany(tk => tk.Statistike);
+            modelBuilder.Entity<Takmicenje>().HasMany(tk => tk.Ucesca);
 
             modelBuilder.Entity<Mesto>().ToTable("Mesto");
             modelBuilder.Entity<Mesto>().HasKey(m => m.MestoId);

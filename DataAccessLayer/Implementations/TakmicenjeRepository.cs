@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Interfaces;
 using Domain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,22 +21,34 @@ namespace DataAccessLayer.Implementations
         }
         public void Add(Takmicenje entity)
         {
-            throw new NotImplementedException();
+            context.Add(entity);
         }
 
         public void Delete(Takmicenje entity)
         {
-            throw new NotImplementedException();
+            context.Remove(entity);
         }
 
         public List<Takmicenje> GetAll()
+        {
+            return context.Takmicenjes.Include(t => t.Ucesca).ThenInclude(s=> s.Tim).ToList();
+        }
+
+        public object GetAllStatistika(int id)
+        {
+            return context.Takmicenjes.Include(t => t.Ucesca).ThenInclude(s => s.Tim).ToList();
+        }
+
+        public object GetAllStatistika()
         {
             throw new NotImplementedException();
         }
 
         public int GetNewId(Takmicenje entity)
         {
-            throw new NotImplementedException();
+            Takmicenje t = context.Takmicenjes.OrderBy(t=>t.TakmicenjeId).Last();
+            int id = t.TakmicenjeId;
+            return id;
         }
 
         public List<Takmicenje> SearchBy(Expression<Func<Takmicenje, bool>> predicate)
@@ -50,7 +63,7 @@ namespace DataAccessLayer.Implementations
 
         public void Update(Takmicenje entity)
         {
-            throw new NotImplementedException();
+            context.Entry(entity).State = EntityState.Modified;
         }
     }
 }

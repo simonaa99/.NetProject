@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Tim
+    public class Ucesce
     {
         public int TimId { get; set; }
-        public String NazivTima { get; set; }
-        public int FakultetId { get; set; }
-        public Fakultet Fakultet { get; set; }
-        public List<Ucesce> Ucesca { get; set; }
+        public Tim Tim { get; set; }
+        public int TakmicenjeId { get; set; }
+        public Takmicenje Takmicenje { get; set; } 
 
         public override string ToString()
         {
-            return $"{NazivTima}";
+            return $"{TimId} {Tim.NazivTima}";
         }
     }
 }

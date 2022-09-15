@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Interfaces
 {
-    public interface IStatistikaRepository:IRepository<Statistika>
+    public interface IUcesceRepository : IRepository<Ucesce>
     {
+        List<Ucesce> GetAll(int id);
     }
 }

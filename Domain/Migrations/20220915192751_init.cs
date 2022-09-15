@@ -101,28 +101,23 @@ namespace Domain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Statistika",
+                name: "Ucesce",
                 columns: table => new
                 {
                     TimId = table.Column<int>(type: "int", nullable: false),
-                    TakmicenjeId = table.Column<int>(type: "int", nullable: false),
-                    DizajnPoeni = table.Column<int>(type: "int", nullable: false),
-                    PrezentacijaPoeni = table.Column<int>(type: "int", nullable: false),
-                    IdejaPoeni = table.Column<int>(type: "int", nullable: false),
-                    FinansijskaIsplativost = table.Column<int>(type: "int", nullable: false),
-                    UkupniPoeni = table.Column<int>(type: "int", nullable: false)
+                    TakmicenjeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Statistika", x => new { x.TimId, x.TakmicenjeId });
+                    table.PrimaryKey("PK_Ucesce", x => new { x.TimId, x.TakmicenjeId });
                     table.ForeignKey(
-                        name: "FK_Statistika_Takmicenje_TakmicenjeId",
+                        name: "FK_Ucesce_Takmicenje_TakmicenjeId",
                         column: x => x.TakmicenjeId,
                         principalTable: "Takmicenje",
                         principalColumn: "TakmicenjeId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Statistika_Tim_TimId",
+                        name: "FK_Ucesce_Tim_TimId",
                         column: x => x.TimId,
                         principalTable: "Tim",
                         principalColumn: "TimId",
@@ -136,6 +131,7 @@ namespace Domain.Migrations
                     OsobaId = table.Column<int>(type: "int", nullable: false),
                     JMBG = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GodinaStudija = table.Column<int>(type: "int", nullable: false),
+                    Kontakt = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MestoId = table.Column<int>(type: "int", nullable: false),
                     TimId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -158,18 +154,19 @@ namespace Domain.Migrations
                         name: "FK_Ucesnik_Tim_TimId",
                         column: x => x.TimId,
                         principalTable: "Tim",
-                        principalColumn: "TimId");
+                        principalColumn: "TimId",
+                        onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Statistika_TakmicenjeId",
-                table: "Statistika",
-                column: "TakmicenjeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tim_FakultetId",
                 table: "Tim",
                 column: "FakultetId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ucesce_TakmicenjeId",
+                table: "Ucesce",
+                column: "TakmicenjeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ucesnik_MestoId",
@@ -188,7 +185,7 @@ namespace Domain.Migrations
                 name: "Administrator");
 
             migrationBuilder.DropTable(
-                name: "Statistika");
+                name: "Ucesce");
 
             migrationBuilder.DropTable(
                 name: "Ucesnik");

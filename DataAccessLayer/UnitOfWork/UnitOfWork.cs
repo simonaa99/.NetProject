@@ -19,7 +19,7 @@ namespace DataAccessLayer.UnitOfWork
             UcesnikRepository = new UcesnikRepository(context);
             TimRepository = new TimRepository(context);
             TakmicenjeRepository = new TakmicenjeRepository(context);
-            StatistikaRepository = new StatistikaRepository(context);
+            UcesceRepository = new UcesceRepository(context);
             MestoRepository = new MestoRepository(context);
             FakultetRepository = new FakultetRepository(context);
             OsobaRepository = new OsobaRepository(context);
@@ -28,7 +28,7 @@ namespace DataAccessLayer.UnitOfWork
         public IUcesnikRepository UcesnikRepository { get; set ; }
         public ITimRepository TimRepository { get; set; }
         public ITakmicenjeRepository TakmicenjeRepository { get; set; }
-        public IStatistikaRepository StatistikaRepository { get; set; }
+        public IUcesceRepository UcesceRepository { get; set; }
         public IMestoRepository MestoRepository { get; set; }
         public IFakultetRepository FakultetRepository { get; set; }
         public IOsobaRepository OsobaRepository { get; set; }

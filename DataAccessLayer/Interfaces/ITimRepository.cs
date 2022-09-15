@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Interfaces
 {
-    public interface ITimRepository:IRepository<Tim>
+    public interface ITimRepository : IRepository<Tim>
     {
+        int SearchByName(string nazivTima);
     }
 }
