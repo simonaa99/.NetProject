@@ -29,10 +29,42 @@ namespace CaseStudyTakmicenje.Controllers
             model.Timovi = timovi.Select(t => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = t.NazivTima, Value = t.TimId.ToString() }).ToList();
             return View(model);
         }
+        //[HttpPost]
+        //public IActionResult Create([FromForm(Name = "Takmicenje")]TakmicenjeViewModel model)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return Create();
+        //    }
+        //    Takmicenje t = new Takmicenje
+        //    {
+        //        TakmicenjeId = model.TakmicenjeId,
+        //        Tema = model.Tema,
+        //        DatumOdrzavanja = model.DatumOdrzavanja,
+        //    };
+        //    uow.TakmicenjeRepository.Add(t);
+        //    //uow.Save();
+        //    foreach (TimViewModel tim in model.Timovi)
+        //    {
+        //        Ucesce u = new Ucesce
+        //        {
+        //            TakmicenjeId = model.TakmicenjeId,
+        //            TimId = tim.TimId
+        //        };
+        //        uow.UcesceRepository.Add(u);
+        //        t.Ucesca.Add(u);
 
+        //    }
+        //    uow.Save();
+        //    return RedirectToAction("Index", "Takmicenje");
+        //}
         [HttpPost]
-        public IActionResult Create([FromForm]UcesceViewModel model)
+        public IActionResult Create([FromForm] UcesceViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return Create();
+            }
             Takmicenje t = new Takmicenje
             {
                 TakmicenjeId = model.Takmicenje.TakmicenjeId,
@@ -40,7 +72,7 @@ namespace CaseStudyTakmicenje.Controllers
                 DatumOdrzavanja = model.Takmicenje.DatumOdrzavanja,
             };
             uow.TakmicenjeRepository.Add(t);
-            uow.Save();
+            //uow.Save();
             foreach (TimViewModel tim in model.Takmicenje.Timovi)
             {
                 Ucesce u = new Ucesce
@@ -53,7 +85,7 @@ namespace CaseStudyTakmicenje.Controllers
 
             }
             uow.Save();
-            return RedirectToAction("Index","Takmicenje"); 
+            return RedirectToAction("Index", "Takmicenje");
         }
 
 
@@ -65,16 +97,6 @@ namespace CaseStudyTakmicenje.Controllers
             return PartialView(model);
         }
 
-        //public IActionResult ComboBoxTim([FromQuery(Name = "timId")] int timId)
-        //{
-        //    UcesceViewModel model = new UcesceViewModel();
-        //    List<Tim> timovi = uow.TimRepository.GetAll();
-        //    Tim t = uow.TimRepository.SearchById(new Tim { TimId = timId });
-        //    timovi.Remove(t);
-        //    model.Timovi = timovi.Select(t => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = t.NazivTima, Value = t.TimId.ToString()}).ToList();
-            
-        //    return PartialView(model);
-        //}
     }
 
 }

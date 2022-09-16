@@ -11,7 +11,7 @@ namespace Domain
         public int TimId { get; set; }
         public Tim Tim { get; set; }
         public int TakmicenjeId { get; set; }
-        public Takmicenje Takmicenje { get; set; } 
+        public Takmicenje Takmicenje { get; set; }
 
         public override string ToString()
         {

@@ -8,6 +8,22 @@ namespace Domain.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Administrator",
+                columns: table => new
+                {
+                    AdministratorId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Ime = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Prezime = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Administrator", x => x.AdministratorId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Fakultet",
                 columns: table => new
                 {
@@ -31,20 +47,6 @@ namespace Domain.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Mesto", x => x.MestoId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Osoba",
-                columns: table => new
-                {
-                    OsobaId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Ime = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Prezime = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Osoba", x => x.OsobaId);
                 });
 
             migrationBuilder.CreateTable(
@@ -81,25 +83,6 @@ namespace Domain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Administrator",
-                columns: table => new
-                {
-                    OsobaId = table.Column<int>(type: "int", nullable: false),
-                    Username = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Administrator", x => x.OsobaId);
-                    table.ForeignKey(
-                        name: "FK_Administrator_Osoba_OsobaId",
-                        column: x => x.OsobaId,
-                        principalTable: "Osoba",
-                        principalColumn: "OsobaId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Ucesce",
                 columns: table => new
                 {
@@ -127,7 +110,10 @@ namespace Domain.Migrations
                 name: "Ucesnik",
                 columns: table => new
                 {
-                    OsobaId = table.Column<int>(type: "int", nullable: false),
+                    UcesnikId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Ime = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Prezime = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     JMBG = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GodinaStudija = table.Column<int>(type: "int", nullable: false),
                     Kontakt = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -136,19 +122,13 @@ namespace Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Ucesnik", x => x.OsobaId);
+                    table.PrimaryKey("PK_Ucesnik", x => x.UcesnikId);
                     table.ForeignKey(
                         name: "FK_Ucesnik_Mesto_MestoId",
                         column: x => x.MestoId,
                         principalTable: "Mesto",
                         principalColumn: "MestoId",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Ucesnik_Osoba_OsobaId",
-                        column: x => x.OsobaId,
-                        principalTable: "Osoba",
-                        principalColumn: "OsobaId",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Ucesnik_Tim_TimId",
                         column: x => x.TimId,
@@ -194,9 +174,6 @@ namespace Domain.Migrations
 
             migrationBuilder.DropTable(
                 name: "Mesto");
-
-            migrationBuilder.DropTable(
-                name: "Osoba");
 
             migrationBuilder.DropTable(
                 name: "Tim");

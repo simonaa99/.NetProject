@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Interfaces
 {
-    public interface IAdministratorRepository : IOsobaRepository
+    public interface IAdministratorRepository:IRepository<Administrator>
     {
         Administrator SearchByUserNamePassword(string username, string password);
     }

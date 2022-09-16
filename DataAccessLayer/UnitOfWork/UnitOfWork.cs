@@ -22,7 +22,6 @@ namespace DataAccessLayer.UnitOfWork
             UcesceRepository = new UcesceRepository(context);
             MestoRepository = new MestoRepository(context);
             FakultetRepository = new FakultetRepository(context);
-            OsobaRepository = new OsobaRepository(context);
             AdministratorRepository = new AdministratorRepository(context);
         }
         public IUcesnikRepository UcesnikRepository { get; set ; }
@@ -31,7 +30,6 @@ namespace DataAccessLayer.UnitOfWork
         public IUcesceRepository UcesceRepository { get; set; }
         public IMestoRepository MestoRepository { get; set; }
         public IFakultetRepository FakultetRepository { get; set; }
-        public IOsobaRepository OsobaRepository { get; set; }
         public IAdministratorRepository AdministratorRepository { get; set; }
 
         public void Save()

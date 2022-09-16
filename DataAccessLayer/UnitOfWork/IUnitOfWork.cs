@@ -14,8 +14,7 @@ namespace DataAccessLayer.UnitOfWork
         public ITakmicenjeRepository TakmicenjeRepository { get; set; }
         public IUcesceRepository UcesceRepository { get; set; }
         public IMestoRepository MestoRepository { get; set; }
-        public IFakultetRepository FakultetRepository { get; set; }
-        public IOsobaRepository OsobaRepository { get; set; }
+        public IFakultetRepository FakultetRepository { get; set; } 
         public IAdministratorRepository AdministratorRepository { get; set; }
         public void Save();
     }

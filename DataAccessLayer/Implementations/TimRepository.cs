@@ -45,7 +45,7 @@ namespace DataAccessLayer.Implementations
 
         public Tim SearchById(Tim entity)
         {
-            return context.Tims.Single(c => c.TimId == entity.TimId);
+            return context.Tims.SingleOrDefault(c => c.TimId == entity.TimId);
         }
 
         public int SearchByName(string nazivTima)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Interfaces
 {
-    public interface IUcesnikRepository:IOsobaRepository
+    public interface IUcesnikRepository: IRepository<Ucesnik>
     {
 
     }

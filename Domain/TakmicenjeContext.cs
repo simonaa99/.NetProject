@@ -12,12 +12,11 @@ namespace Domain
         public DbSet<Fakultet> Fakultets { get; set; }
         public DbSet<Mesto> Mestos { get; set; }
         public DbSet<Tim> Tims { get; set; }
-        public DbSet<Osoba> Osobas { get; set; }
-        public DbSet<Administrator> Administartors { get; set; }
+        public DbSet<Administrator> Administrators{ get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-             .UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; Database=Takmicenje_Database;");
+             .UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; Database=CaseStudyTakmicenje_Database;");
             //.LogTo(Debug.WriteLine)
             //.EnableSensitiveDataLogging(true);
         }
@@ -30,6 +29,7 @@ namespace Domain
             modelBuilder.Entity<Ucesce>().HasOne(s => s.Takmicenje).WithMany(tk => tk.Ucesca).HasForeignKey(s => s.TakmicenjeId);
 
             modelBuilder.Entity<Ucesnik>().ToTable("Ucesnik");
+            modelBuilder.Entity<Ucesnik>().HasKey(u => u.UcesnikId);
             modelBuilder.Entity<Ucesnik>().HasOne(u => u.Tim).WithMany().HasForeignKey(u => u.TimId);
             modelBuilder.Entity<Ucesnik>().HasOne(u => u.Mesto).WithMany().HasForeignKey(u => u.MestoId);
 
@@ -49,9 +49,10 @@ namespace Domain
             modelBuilder.Entity<Fakultet>().ToTable("Fakultet");
             modelBuilder.Entity<Fakultet>().HasKey(f => f.FakultetId);
 
-            modelBuilder.Entity<Osoba>().ToTable("Osoba");
-            modelBuilder.Entity<Ucesnik>().HasBaseType<Osoba>().ToTable("Ucesnik");
-            modelBuilder.Entity<Administrator>().HasBaseType<Osoba>().ToTable("Administrator");
+            modelBuilder.Entity<Administrator>().ToTable("Administrator");
+            modelBuilder.Entity<Administrator>().HasKey(a => a.AdministratorId);
+
+
         }
     }
 

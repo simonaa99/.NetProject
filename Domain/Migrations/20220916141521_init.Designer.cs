@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Domain.Migrations
 {
     [DbContext(typeof(TakmicenjeContext))]
-    [Migration("20220916083925_init")]
+    [Migration("20220916141521_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -18,8 +18,32 @@ namespace Domain.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.11")
+                .HasAnnotation("ProductVersion", "5.0.13")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Domain.Administrator", b =>
+                {
+                    b.Property<int>("AdministratorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Ime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Prezime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AdministratorId");
+
+                    b.ToTable("Administrator");
+                });
 
             modelBuilder.Entity("Domain.Fakultet", b =>
                 {
@@ -49,26 +73,6 @@ namespace Domain.Migrations
                     b.HasKey("MestoId");
 
                     b.ToTable("Mesto");
-                });
-
-            modelBuilder.Entity("Domain.Osoba", b =>
-                {
-                    b.Property<int>("OsobaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Ime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Prezime")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("OsobaId");
-
-                    b.ToTable("Osoba");
                 });
 
             modelBuilder.Entity("Domain.Takmicenje", b =>
@@ -122,25 +126,18 @@ namespace Domain.Migrations
                     b.ToTable("Ucesce");
                 });
 
-            modelBuilder.Entity("Domain.Administrator", b =>
-                {
-                    b.HasBaseType("Domain.Osoba");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.ToTable("Administrator");
-                });
-
             modelBuilder.Entity("Domain.Ucesnik", b =>
                 {
-                    b.HasBaseType("Domain.Osoba");
+                    b.Property<int>("UcesnikId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("GodinaStudija")
                         .HasColumnType("int");
+
+                    b.Property<string>("Ime")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("JMBG")
                         .HasColumnType("nvarchar(max)");
@@ -151,8 +148,13 @@ namespace Domain.Migrations
                     b.Property<int>("MestoId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Prezime")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("TimId")
                         .HasColumnType("int");
+
+                    b.HasKey("UcesnikId");
 
                     b.HasIndex("MestoId");
 
@@ -191,27 +193,12 @@ namespace Domain.Migrations
                     b.Navigation("Tim");
                 });
 
-            modelBuilder.Entity("Domain.Administrator", b =>
-                {
-                    b.HasOne("Domain.Osoba", null)
-                        .WithOne()
-                        .HasForeignKey("Domain.Administrator", "OsobaId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Domain.Ucesnik", b =>
                 {
                     b.HasOne("Domain.Mesto", "Mesto")
                         .WithMany()
                         .HasForeignKey("MestoId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Osoba", null)
-                        .WithOne()
-                        .HasForeignKey("Domain.Ucesnik", "OsobaId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
                     b.HasOne("Domain.Tim", "Tim")

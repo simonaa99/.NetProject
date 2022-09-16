@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public class Ucesnik:Osoba
+    public class Ucesnik
     {
+        public int UcesnikId { get; set; }
+        public String Ime { get; set; }
+        public String Prezime { get; set; }
         public String JMBG { get; set; }
         public int GodinaStudija { get; set; }
         public String Kontakt { get; set; }
@@ -18,7 +21,7 @@ namespace Domain
 
         public override string ToString()
         {
-            return $"{OsobaId} {Ime} {Prezime} {Mesto.NazivMesta} {Tim.NazivTima}";
+            return $"{UcesnikId} {Ime} {Prezime} {Mesto.NazivMesta} {Tim.NazivTima}";
         }
     }
 }

@@ -18,37 +18,37 @@ namespace DataAccessLayer.Implementations
         {
             this.context = context;
         }
-        public void Add(Osoba entity)
+        public void Add(Ucesnik entity)
         {
             context.Add(entity);
         }
 
-        public void Delete(Osoba entity)
+        public void Delete(Ucesnik entity)
         {
             context.Remove(entity);
         }
 
-        public List<Osoba> GetAll()
+        public List<Ucesnik> GetAll()
         {
-            return context.Ucesnics.Include(u => u.Tim).Include(u=>u.Mesto).ToList().OfType<Osoba>().ToList();
+            return context.Ucesnics.Include(u => u.Tim).Include(u=>u.Mesto).ToList();
         }
 
-        public int GetNewId(Osoba entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Osoba> SearchBy(Expression<Func<Osoba, bool>> predicate)
+        public int GetNewId(Ucesnik entity)
         {
             throw new NotImplementedException();
         }
 
-        public Osoba SearchById(Osoba entity)
+        public List<Ucesnik> SearchBy(Expression<Func<Ucesnik, bool>> predicate)
         {
-            return context.Ucesnics.Find(entity.OsobaId);
+            throw new NotImplementedException();
         }
 
-        public void Update(Osoba entity)
+        public Ucesnik SearchById(Ucesnik entity)
+        {
+            return context.Ucesnics.Find(entity.UcesnikId);
+        }
+
+        public void Update(Ucesnik entity)
         {
             context.Entry(entity).State = EntityState.Modified;
         }

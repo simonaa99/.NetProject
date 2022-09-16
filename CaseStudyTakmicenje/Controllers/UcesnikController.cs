@@ -23,7 +23,7 @@ namespace CaseStudyTakmicenje.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            List<Ucesnik> model = unitOfWork.UcesnikRepository.GetAll().OfType<Ucesnik>().ToList();
+            List<Ucesnik> model = unitOfWork.UcesnikRepository.GetAll();
             return View(model);
 
         }
@@ -65,7 +65,7 @@ namespace CaseStudyTakmicenje.Controllers
         {
             UcesnikViewModel model = new UcesnikViewModel();
 
-            Ucesnik s = (Ucesnik)unitOfWork.UcesnikRepository.SearchById(new Ucesnik { OsobaId = id });
+            Ucesnik s = (Ucesnik)unitOfWork.UcesnikRepository.SearchById(new Ucesnik { UcesnikId = id });
 
             model.Ime = s.Ime;
             model.Prezime = s.Prezime;
@@ -88,7 +88,7 @@ namespace CaseStudyTakmicenje.Controllers
         {
             unitOfWork.UcesnikRepository.Update(new Ucesnik
             {
-                OsobaId = id,
+                UcesnikId = id,
                 Ime = ucesnik.Ime,
                 Prezime = ucesnik.Prezime,
                 JMBG = ucesnik.JMBG,
@@ -106,7 +106,7 @@ namespace CaseStudyTakmicenje.Controllers
         {
             UcesnikViewModel model = new UcesnikViewModel();
 
-            Ucesnik s = (Ucesnik)unitOfWork.UcesnikRepository.SearchById(new Ucesnik { OsobaId = id });
+            Ucesnik s = (Ucesnik)unitOfWork.UcesnikRepository.SearchById(new Ucesnik { UcesnikId = id });
 
             model.Ime = s.Ime;
             model.Prezime = s.Prezime;
@@ -129,7 +129,7 @@ namespace CaseStudyTakmicenje.Controllers
         {
             unitOfWork.UcesnikRepository.Delete(new Ucesnik
             {
-                OsobaId = id,
+                UcesnikId = id,
                 Ime = ucesnik.Ime,
                 Prezime = ucesnik.Prezime,
                 JMBG = ucesnik.JMBG,

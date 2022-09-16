@@ -19,42 +19,42 @@ namespace DataAccessLayer.Implementations
             this.context = context;
         }
 
-        public void Add(Osoba entity)
+        public void Add(Administrator entity)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Osoba entity)
+        public void Delete(Administrator entity)
         {
             throw new NotImplementedException();
         }
 
-        public List<Osoba> GetAll()
+        public List<Administrator> GetAll()
         {
-            return context.Osobas.ToList();
+            return context.Administrators.ToList();
         }
 
-        public int GetNewId(Osoba entity)
+        public int GetNewId(Administrator entity)
         {
             throw new NotImplementedException();
         }
 
-        public List<Osoba> SearchBy(Expression<Func<Osoba, bool>> predicate)
+        public List<Administrator> SearchBy(Expression<Func<Administrator, bool>> predicate)
         {
-            return context.Osobas.Where(predicate).ToList();
+            return context.Administrators.Where(predicate).ToList();
         }
 
-        public Osoba SearchById(Osoba entity)
+        public Administrator SearchById(Administrator entity)
         {
-            return context.Osobas.Single(c => c.OsobaId == entity.OsobaId);
+            return context.Administrators.Single(c => c.AdministratorId == entity.AdministratorId);
         }
 
         public Administrator SearchByUserNamePassword(string username, string password)
         {
-            return context.Administartors.SingleOrDefault(a => a.Username == username && a.Password == password);
+            return context.Administrators.SingleOrDefault(a => a.Username == username && a.Password == password);
         }
 
-        public void Update(Osoba entity)
+        public void Update(Administrator entity)
         {
             throw new NotImplementedException();
         }

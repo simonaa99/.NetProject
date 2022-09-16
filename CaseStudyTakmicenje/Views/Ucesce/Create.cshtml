@@ -61,7 +61,10 @@
 @section Scripts {
     <script>
         $("#addUcesce").click(function(e){
-            $.ajax({
+
+            if ($("#timovi").length != 0) {
+               
+                $.ajax({
                 url: "@Url.Action("CreateUcesce", "Ucesce")",
             method: 'GET',
                 data: { "takmicenjeId":$("takmicenjeId").val(), "timId": $("#timovi").val(), "sn": $("tbody tr").length },
@@ -71,7 +74,12 @@
             error: function(data){
                 alert("error");
             }
-            });
+                });
+                
+            } else {
+                alert("Izabrali ste sve timove");
+                return false;
+            } $("#timovi option:selected").remove();
         return false;
         });
 
