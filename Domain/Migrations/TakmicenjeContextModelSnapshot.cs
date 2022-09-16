@@ -72,9 +72,7 @@ namespace Domain.Migrations
             modelBuilder.Entity("Domain.Takmicenje", b =>
                 {
                     b.Property<int>("TakmicenjeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("DatumOdrzavanja")
                         .HasColumnType("datetime2");

@@ -9,9 +9,11 @@ namespace CaseStudyTakmicenje.Models
 {
     public class TimViewModel
     {
+        public int TimId { get; set; }
         [Required (ErrorMessage = "Naziv tima je obavezan")]
         public String NazivTima { get; set; }
         public int FakultetId { get; set; }
         public List<SelectListItem> Fakulteti { get; set; }
+        public int Sn { get; set; }
     }
 }

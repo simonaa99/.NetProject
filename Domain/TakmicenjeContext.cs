@@ -38,7 +38,9 @@ namespace Domain
             modelBuilder.Entity<Tim>().HasOne(t => t.Fakultet).WithMany().HasForeignKey(t => t.FakultetId);
 
             modelBuilder.Entity<Takmicenje>().ToTable("Takmicenje");
-            modelBuilder.Entity<Takmicenje>().HasKey(tk => tk.TakmicenjeId);
+            modelBuilder.Entity<Takmicenje>().Property(tk => tk.TakmicenjeId).ValueGeneratedNever();
+           // modelBuilder.Entity<Takmicenje>().HasKey(tk => tk.TakmicenjeId);
+            
             modelBuilder.Entity<Takmicenje>().HasMany(tk => tk.Ucesca);
 
             modelBuilder.Entity<Mesto>().ToTable("Mesto");

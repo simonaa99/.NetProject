@@ -1,13 +1,13 @@
 ﻿@using Domain
 @model List<Takmicenje>
 
-<p><a href="Takmicenje/Create">Kreiraj novo takmicenje sa statistikom</a></p>
+<p><a href="Ucesce/Create">Kreiraj novo takmicenje sa timovima</a></p>
 <table class="table">
     <thead>
         <tr>
             <th>Tema</th>
             <th>Datum održavanja</th>
-            <th>Vidi statistiku</th>
+            <th>Vidi timove koji su ucestvovali na takmicenju</th>
         </tr>
     </thead>
     <tbody>
@@ -16,7 +16,7 @@
 <tr>
     <td>@item.Tema</td>
     <td>@item.DatumOdrzavanja.Date.GetDateTimeFormats()[3]</td>
-    <td><a href="Takmicenje/Details/@item.TakmicenjeId">Statistika</a></td>
+    <td><a href="Takmicenje/Details/@item.TakmicenjeId">Timovi</a></td>
 </tr>
 }
 

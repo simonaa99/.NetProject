@@ -1,0 +1,28 @@
+﻿@using Domain
+@model List<Ucesce>
+
+<h3>Timovi koji su ucestvovali na odabranom takmicenju</h3>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Naziv tima</th>
+				<th>Fakultet</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (Ucesce item in Model)
+		   {
+			   <tr>
+				<td>@item.Tim.NazivTima</td>
+				<td>@item.Tim.Fakultet.NazivFakulteta</td>
+				</tr>
+		   }
+		</tbody>
+	</table>
+    <div>
+        <a asp-action="Index" asp-controller="Takmicenje">Vrati se na listu takmicenja</a>
+    </div>
+
+
+

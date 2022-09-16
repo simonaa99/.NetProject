@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Domain.Migrations
 {
     [DbContext(typeof(TakmicenjeContext))]
-    [Migration("20220915192751_init")]
+    [Migration("20220916083925_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,9 +74,7 @@ namespace Domain.Migrations
             modelBuilder.Entity("Domain.Takmicenje", b =>
                 {
                     b.Property<int>("TakmicenjeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("DatumOdrzavanja")
                         .HasColumnType("datetime2");

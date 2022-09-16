@@ -51,6 +51,13 @@ namespace DataAccessLayer.Implementations
             return id;
         }
 
+        public int GetNewId()
+        {
+            Takmicenje t = context.Takmicenjes.OrderBy(t => t.TakmicenjeId).Last();
+            int id = t.TakmicenjeId + 1;
+            return id;
+        }
+
         public List<Takmicenje> SearchBy(Expression<Func<Takmicenje, bool>> predicate)
         {
             throw new NotImplementedException();

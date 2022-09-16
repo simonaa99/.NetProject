@@ -35,7 +35,7 @@ namespace DataAccessLayer.Implementations
 
         public List<Ucesce> GetAll(int id)
         {
-            return context.Ucesces.Where(s => s.TakmicenjeId == id).Include(s => s.Tim).ToList();
+            return context.Ucesces.Where(u => u.TakmicenjeId == id ).Include(t => t.Tim.Fakultet).ToList();
         }
 
         public int GetNewId(Ucesce entity)

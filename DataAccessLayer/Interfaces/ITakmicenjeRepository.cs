@@ -10,5 +10,6 @@ namespace DataAccessLayer.Interfaces
     public interface ITakmicenjeRepository : IRepository<Takmicenje>
     {
         object GetAllStatistika();
+        int GetNewId();
     }
 }

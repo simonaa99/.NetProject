@@ -1,0 +1,81 @@
+﻿@model CaseStudyTakmicenje.Models.UcesceViewModel
+
+<h4>TakmicenjeViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" asp-controller="Ucesce">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Takmicenje.TakmicenjeId" class="control-label" hidden></label>
+                <input asp-for="Takmicenje.TakmicenjeId" class="form-control" id="takmicenjeId" hidden/>
+                <span asp-validation-for="Takmicenje.TakmicenjeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Takmicenje.Tema" class="control-label"></label>
+                <input asp-for="Takmicenje.Tema" class="form-control" />
+                <span asp-validation-for="Takmicenje.Tema" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Takmicenje.DatumOdrzavanja" class="control-label"></label>
+                <input asp-for="Takmicenje.DatumOdrzavanja" class="form-control" />
+                <span asp-validation-for="Takmicenje.DatumOdrzavanja" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Timovi" class="control-label"></label>
+                <select asp-items="@Model.Timovi" class="form-control" id="timovi"></select>
+            </div>
+
+            <button class="btn btn-dark" id="addUcesce" type="button">Dodaj tim</button>
+
+            <span asp-validation-for="Takmicenje.Timovi"></span>
+            <span data-></span>
+            <table class="table-borderless" id="utimovi">
+                <thead>
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Naziv tima
+                        </th>
+                        <th>
+                            Fakultet
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="form-group">
+                <input type="submit" value="Kreiraj takmicenje" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="Takmicenje">Vrati se na listu takmicenja</a>
+</div>
+
+@section Scripts {
+    <script>
+        $("#addUcesce").click(function(e){
+            $.ajax({
+                url: "@Url.Action("CreateUcesce", "Ucesce")",
+            method: 'GET',
+                data: { "takmicenjeId":$("takmicenjeId").val(), "timId": $("#timovi").val(), "sn": $("tbody tr").length },
+            success: function(data){
+                $("#utimovi tbody").append(data);
+            },
+            error: function(data){
+                alert("error");
+            }
+            });
+        return false;
+        });
+
+
+
+    </script>
+}

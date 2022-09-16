@@ -51,8 +51,7 @@ namespace Domain.Migrations
                 name: "Takmicenje",
                 columns: table => new
                 {
-                    TakmicenjeId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TakmicenjeId = table.Column<int>(type: "int", nullable: false),
                     Tema = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DatumOdrzavanja = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
