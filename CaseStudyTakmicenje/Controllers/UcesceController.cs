@@ -65,10 +65,10 @@ namespace CaseStudyTakmicenje.Controllers
         [HttpPost]
         public IActionResult Create([FromForm] UcesceViewModel model)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return Create();
-            //}
+            if (!ModelState.IsValid)
+            {
+                return Create();
+            }
             Takmicenje t = new Takmicenje
             {
                 TakmicenjeId = model.Takmicenje.TakmicenjeId,
