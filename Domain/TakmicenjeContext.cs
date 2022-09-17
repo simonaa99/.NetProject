@@ -3,11 +3,15 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Domain
 {
     public class TakmicenjeContext:IdentityDbContext<Administrator,IdentityRole<int>,int>
     {
+        public TakmicenjeContext([NotNull] DbContextOptions options) : base(options)
+        {
+        }
         public DbSet<Ucesnik> Ucesnics { get; set; }
         public DbSet<Takmicenje> Takmicenjes { get; set; }
         public DbSet<Ucesce> Ucesces { get; set; }
@@ -17,8 +21,8 @@ namespace Domain
         public DbSet<Administrator> Administrators{ get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder
-             .UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; Database=CaseStudyTakmicenje_Database; Trusted_Connection = True;");
+            //optionsBuilder
+            // .UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; Database=CaseStudyTakmicenje_Database; Trusted_Connection = True;");
             //.LogTo(Debug.WriteLine)
             //.EnableSensitiveDataLogging(true);
         }

@@ -1,6 +1,6 @@
 ﻿@model CaseStudyTakmicenje.Models.UcesceViewModel
 
-<h4>TakmicenjeViewModel</h4>
+<h2>Novo takmičenje</h2>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -33,14 +33,11 @@
             <table class="table-borderless" id="utimovi">
                 <thead>
                     <tr>
-                        <th>
+                        <th hidden>
                             Id
                         </th>
                         <th>
                             Naziv tima
-                        </th>
-                        <th>
-                            Fakultet
                         </th>
                     </tr>
                 </thead>
@@ -55,7 +52,7 @@
 </div>
 
 <div>
-    <a asp-action="Index" asp-controller="Takmicenje">Vrati se na listu takmicenja</a>
+    <a asp-action="Index" asp-controller="Takmicenje">Vrati se na listu takmičenja</a>
 </div>
 
 @section Scripts {

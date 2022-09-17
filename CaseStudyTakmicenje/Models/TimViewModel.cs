@@ -15,5 +15,6 @@ namespace CaseStudyTakmicenje.Models
         public int FakultetId { get; set; }
         public List<SelectListItem> Fakulteti { get; set; }
         public int Sn { get; set; }
+
     }
 }

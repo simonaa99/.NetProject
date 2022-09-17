@@ -4,9 +4,8 @@
     ViewData["Title"] = "Obrisi";
 }
 
-<h1>Obriši</h1>
+<h1>Obriši odabranog učesnika</h1>
 
-<h4>Podaci o učesniku</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -38,15 +37,18 @@
                 <span asp-validation-for="GodinaStudija" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MestoId" class="control-label"></label>
+                <label asp-for="MestoId" class="control-label">Mesto</label>
                 <select asp-for="MestoId" asp-items="Model.Mesta" class="form-control" disabled></select>
             </div>
             <div class="form-group">
-                <label asp-for="TimId" class="control-label"></label>
+                <label asp-for="TimId" class="control-label">Tim</label>
                 <select asp-for="TimId" asp-items="Model.Timovi" class="form-control" disabled></select>
             </div>
+            <div>
+                <p>Da li ste sigurni da želite da obrišete učesnika?</p>
+            </div>
             <div class="form-group">
-                <input type="submit" value="Obrisi" class="btn btn-primary" />
+                <input type="submit" value="Obriši" class="btn btn-primary" />
             </div>
         </form>
     </div>

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,7 +32,9 @@ namespace CaseStudyTakmicenje
             services.AddIdentity<Administrator, IdentityRole<int>>().AddEntityFrameworkStores<TakmicenjeContext>();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddDbContext<TakmicenjeContext>();
+            services.AddDbContext<TakmicenjeContext>(options => {
+                options.UseSqlServer(Configuration.GetConnectionString("baza"));
+            });
             services.ConfigureApplicationCookie(options => {
                 options.LoginPath = "/Authentication/Login";
                 options.AccessDeniedPath = "/Authentication/Forbidden";

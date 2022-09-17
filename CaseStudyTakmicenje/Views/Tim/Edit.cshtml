@@ -4,9 +4,8 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Ažuriraj odabrani tim</h1>
 
-<h4>TimViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,18 +17,18 @@
                 <span asp-validation-for="NazivTima" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FakultetId" class="control-label"></label>
+                <label asp-for="FakultetId" class="control-label">Fakultet</label>
                 <select asp-for="FakultetId" asp-items="Model.Fakulteti" class="form-control"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Azuriraj" class="btn btn-primary" />
+                <input type="submit" value="Ažuriraj" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Vrati se na listu svih timova</a>
+    <a asp-action="Index">Vrati se na listu timova</a>
 </div>
 
 @section Scripts {
