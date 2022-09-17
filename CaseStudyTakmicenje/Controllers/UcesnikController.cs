@@ -1,6 +1,8 @@
-﻿using CaseStudyTakmicenje.Models;
+﻿using CaseStudyTakmicenje.Filter;
+using CaseStudyTakmicenje.Models;
 using DataAccessLayer.UnitOfWork;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -10,6 +12,8 @@ using System.Threading.Tasks;
 
 namespace CaseStudyTakmicenje.Controllers
 {
+    [Authorize]
+    [LoggedIn]
     public class UcesnikController : Controller
     {
         private readonly IUnitOfWork unitOfWork;
@@ -23,6 +27,7 @@ namespace CaseStudyTakmicenje.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            
             List<Ucesnik> model = unitOfWork.UcesnikRepository.GetAll();
             return View(model);
 
@@ -30,6 +35,7 @@ namespace CaseStudyTakmicenje.Controllers
 
         public IActionResult Create()
         {
+            
             UcesnikViewModel model = new UcesnikViewModel();
             var mesta = unitOfWork.MestoRepository.GetAll();
             var timovi = unitOfWork.TimRepository.GetAll();
@@ -63,6 +69,7 @@ namespace CaseStudyTakmicenje.Controllers
 
         public IActionResult Edit(int id)
         {
+            
             UcesnikViewModel model = new UcesnikViewModel();
 
             Ucesnik s = (Ucesnik)unitOfWork.UcesnikRepository.SearchById(new Ucesnik { UcesnikId = id });
@@ -104,6 +111,7 @@ namespace CaseStudyTakmicenje.Controllers
 
         public IActionResult Delete(int id)
         {
+           
             UcesnikViewModel model = new UcesnikViewModel();
 
             Ucesnik s = (Ucesnik)unitOfWork.UcesnikRepository.SearchById(new Ucesnik { UcesnikId = id });

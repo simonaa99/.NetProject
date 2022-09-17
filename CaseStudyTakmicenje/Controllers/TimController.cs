@@ -1,6 +1,8 @@
-﻿using CaseStudyTakmicenje.Models;
+﻿using CaseStudyTakmicenje.Filter;
+using CaseStudyTakmicenje.Models;
 using DataAccessLayer.UnitOfWork;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -10,6 +12,8 @@ using System.Threading.Tasks;
 
 namespace CaseStudyTakmicenje.Controllers
 {
+    [Authorize]
+    [LoggedIn]
     public class TimController : Controller
     {
         private readonly IUnitOfWork unitOfWork;
@@ -23,6 +27,7 @@ namespace CaseStudyTakmicenje.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            
             List<Tim> model = unitOfWork.TimRepository.GetAll().OfType<Tim>().ToList();
             return View(model);
 
@@ -30,6 +35,7 @@ namespace CaseStudyTakmicenje.Controllers
 
         public IActionResult Create()
         {
+            
             TimViewModel model = new TimViewModel();
             var fakulteti = unitOfWork.FakultetRepository.GetAll();
             model.Fakulteti = fakulteti.Select(f => new SelectListItem(f.NazivFakulteta, f.FakultetId.ToString())).ToList();
@@ -56,6 +62,7 @@ namespace CaseStudyTakmicenje.Controllers
 
         public IActionResult Edit(int id)
         {
+           
             TimViewModel model = new TimViewModel();
 
             Tim t = (Tim)unitOfWork.TimRepository.SearchById(new Tim { TimId = id });
@@ -86,6 +93,7 @@ namespace CaseStudyTakmicenje.Controllers
 
         public IActionResult Delete(int id)
         {
+            
             TimViewModel model = new TimViewModel();
 
             Tim t = (Tim)unitOfWork.TimRepository.SearchById(new Tim { TimId = id });

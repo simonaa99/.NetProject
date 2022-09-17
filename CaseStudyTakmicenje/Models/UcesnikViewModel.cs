@@ -15,6 +15,8 @@ namespace CaseStudyTakmicenje.Models
         [Required(ErrorMessage = "Obavezno polje")]
         public String Prezime { get; set; }
         [Required(ErrorMessage = "Obavezno polje")]
+        [MaxLength(13,ErrorMessage = "JMBG mora da ima tačno 13 brojeva!")]
+        [MinLength(13, ErrorMessage = "JMBG mora da ima tačno 13 brojeva!")]
         public String JMBG { get; set; }
         [Required(ErrorMessage = "Obavezno polje")]
         public String Kontakt { get; set; }
@@ -29,7 +31,7 @@ namespace CaseStudyTakmicenje.Models
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             List<ValidationResult> result = new List<ValidationResult>();
-            if (JMBG.Length == 0)
+            if (JMBG.Length != 13)
             {
                 result.Add(new ValidationResult("JMBG mora da ima tačno 13 brojeva!"));
 

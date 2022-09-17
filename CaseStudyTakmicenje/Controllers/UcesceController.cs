@@ -1,6 +1,8 @@
-﻿using CaseStudyTakmicenje.Models;
+﻿using CaseStudyTakmicenje.Filter;
+using CaseStudyTakmicenje.Models;
 using DataAccessLayer.UnitOfWork;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace CaseStudyTakmicenje.Controllers
 {
+    [Authorize]
+    [LoggedIn]
     public class UcesceController : Controller
     {
         private readonly IUnitOfWork uow;
@@ -61,10 +65,10 @@ namespace CaseStudyTakmicenje.Controllers
         [HttpPost]
         public IActionResult Create([FromForm] UcesceViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return Create();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return Create();
+            //}
             Takmicenje t = new Takmicenje
             {
                 TakmicenjeId = model.Takmicenje.TakmicenjeId,
@@ -90,7 +94,6 @@ namespace CaseStudyTakmicenje.Controllers
 
 
         public IActionResult CreateUcesce([FromQuery(Name = "takmicenjeId")] int takmicenjeId,[FromQuery(Name = "timId")]int timId, [FromQuery(Name = "sn")] int number) {
-
             Tim t = uow.TimRepository.SearchById(new Tim { TimId = timId });
             TimViewModel model = new TimViewModel { TimId = t.TimId, NazivTima = t.NazivTima, Sn = number };
 

@@ -1,6 +1,8 @@
-﻿using CaseStudyTakmicenje.Models;
+﻿using CaseStudyTakmicenje.Filter;
+using CaseStudyTakmicenje.Models;
 using DataAccessLayer.UnitOfWork;
 using Domain;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -10,6 +12,8 @@ using System.Threading.Tasks;
 
 namespace CaseStudyTakmicenje.Controllers
 {
+    [Authorize]
+    [LoggedIn] 
     public class TakmicenjeController : Controller
     {
         private readonly IUnitOfWork unitOfWork;
@@ -21,12 +25,14 @@ namespace CaseStudyTakmicenje.Controllers
         }
         public IActionResult Index()
         {
+
             List<Takmicenje> model = unitOfWork.TakmicenjeRepository.GetAll().OfType<Takmicenje>().ToList();
             return View(model);
         }
 
         public IActionResult Details(int id)
         {
+     
             List<Ucesce> model = (List<Ucesce>)unitOfWork.UcesceRepository.GetAll(id);
 
             return View(model);

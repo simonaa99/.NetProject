@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Diagnostics;
 
 namespace Domain
 {
-    public class TakmicenjeContext:DbContext
+    public class TakmicenjeContext:IdentityDbContext<Administrator,IdentityRole<int>,int>
     {
         public DbSet<Ucesnik> Ucesnics { get; set; }
         public DbSet<Takmicenje> Takmicenjes { get; set; }
@@ -16,7 +18,7 @@ namespace Domain
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-             .UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; Database=CaseStudyTakmicenje_Database;");
+             .UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; Database=CaseStudyTakmicenje_Database; Trusted_Connection = True;");
             //.LogTo(Debug.WriteLine)
             //.EnableSensitiveDataLogging(true);
         }
@@ -50,7 +52,8 @@ namespace Domain
             modelBuilder.Entity<Fakultet>().HasKey(f => f.FakultetId);
 
             modelBuilder.Entity<Administrator>().ToTable("Administrator");
-            modelBuilder.Entity<Administrator>().HasKey(a => a.AdministratorId);
+
+            base.OnModelCreating(modelBuilder);
 
 
         }

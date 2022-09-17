@@ -46,12 +46,12 @@ namespace DataAccessLayer.Implementations
 
         public Administrator SearchById(Administrator entity)
         {
-            return context.Administrators.Single(c => c.AdministratorId == entity.AdministratorId);
+            return context.Administrators.Single(c => c.Id == entity.Id);
         }
 
         public Administrator SearchByUserNamePassword(string username, string password)
         {
-            return context.Administrators.SingleOrDefault(a => a.Username == username && a.Password == password);
+            return context.Administrators.SingleOrDefault(a => a.UserName == username && a.PasswordHash == password);
         }
 
         public void Update(Administrator entity)

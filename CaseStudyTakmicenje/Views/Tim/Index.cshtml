@@ -1,7 +1,7 @@
 ﻿@using Domain
 @model List<Tim>
 
-<p><a href="Tim/Create">Kreiraj novi tim</a></p>
+<p><a href="@Url.ActionLink("Create", "Tim")"/>Kreiraj novi tim</a></p>
 <table class="table">
     <thead>
         <tr>
@@ -14,12 +14,12 @@
     <tbody>
         @foreach (Tim item in Model)
         {
-<tr>
-    <td>@item.NazivTima</td>
-    <td>@item.Fakultet</td>
-    <td><a href="Tim/Edit/@item.TimId">Ažuriraj</a></td>
-    <td><a href="Tim/Delete/@item.TimId">Obrisi</a></td>
-</tr>
+    <tr>
+        <td>@item.NazivTima</td>
+        <td>@item.Fakultet</td>
+        <td><a href="@Url.ActionLink("Edit", "Tim")/@item.TimId">Ažuriraj</a></td>
+        <td><a href="@Url.ActionLink("Delete", "Tim")/@item.TimId">Obrisi</a></td>
+    </tr>
 }
 
 

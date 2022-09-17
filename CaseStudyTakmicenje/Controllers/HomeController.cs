@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.UnitOfWork;
+﻿using CaseStudyTakmicenje.Filter;
+using DataAccessLayer.UnitOfWork;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace CaseStudyTakmicenje.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly IUnitOfWork unitOfWork;
@@ -16,8 +19,10 @@ namespace CaseStudyTakmicenje.Controllers
             this.unitOfWork = unitOfWork;
 
         }
+        [LoggedIn]
         public IActionResult Index()
         {
+            var user = HttpContext.User;
             return View();
         }
     }

@@ -64,7 +64,7 @@ namespace ConsoleApp1
             context.Add(u5);
             context.Add(u6);
             context.SaveChanges();
-            Administrator a = new Administrator {Ime = "Petar", Prezime = "Petrovic", Username ="pera123", Password = "pera" };
+            Administrator a = new Administrator {Ime = "Petar", Prezime = "Petrovic", UserName ="pera123", PasswordHash = "pera" };
             context.Add(a);
             context.SaveChanges();
             //List<Takmicenje> t = context.Takmicenjes.Include(c => c.Ucesca).ThenInclude(s=>s.Tim).ToList();

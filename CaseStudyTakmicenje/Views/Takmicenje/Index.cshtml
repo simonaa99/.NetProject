@@ -1,7 +1,7 @@
 ﻿@using Domain
 @model List<Takmicenje>
 
-<p><a href="Ucesce/Create">Kreiraj novo takmicenje sa timovima</a></p>
+<a href="@Url.ActionLink("Create", "Ucesce")">Kreiraj novo takmicenje sa timovima</a>
 <table class="table">
     <thead>
         <tr>
@@ -16,7 +16,7 @@
 <tr>
     <td>@item.Tema</td>
     <td>@item.DatumOdrzavanja.Date.GetDateTimeFormats()[3]</td>
-    <td><a href="Takmicenje/Details/@item.TakmicenjeId">Timovi</a></td>
+    <td><a href="@Url.ActionLink("Details", "Takmicenje")/@item.TakmicenjeId">Timovi</a></td>
 </tr>
 }
 

@@ -1,7 +1,7 @@
 ﻿@using Domain
 @model List<Ucesnik>
 
-<p><a href="Ucesnik/Create">Kreiraj novog ucesnika</a></p>
+<a href="@Url.ActionLink("Create", "Ucesnik")">Kreiraj novog ucesnika</a>
 <table class="table">
     <thead>
         <tr>
@@ -23,8 +23,8 @@
     <td>@item.GodinaStudija</td>
     <td>@item.Mesto.NazivMesta</td>
     <td>@item.Tim.NazivTima</td>
-    <td><a href="Ucesnik/Edit/@item.UcesnikId">Ažuriraj</a></td>
-    <td><a href="Ucesnik/Delete/@item.UcesnikId">Obrisi</a></td>
+    <td><a href="@Url.ActionLink("Edit", "Ucesnik")/@item.UcesnikId">Ažuriraj</a></td>
+    <td><a href="@Url.ActionLink("Delete", "Ucesnik")/@item.UcesnikId">Obrisi</a></td>
 </tr>}
 
 
