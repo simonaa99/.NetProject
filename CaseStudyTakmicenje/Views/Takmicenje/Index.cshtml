@@ -1,13 +1,15 @@
 ﻿@using Domain
 @model List<Takmicenje>
-
-<a href="@Url.ActionLink("Create", "Ucesce")">Kreiraj novo takmičenje sa timovima</a>
+@{
+    ViewData["Title"] = "Takmičenja";
+}
+<p><a href="@Url.ActionLink("Create", "Ucesce")">Kreiraj novo takmičenje sa timovima</a></p>
 <table class="table">
     <thead>
         <tr>
-            <th>Tema</th>
-            <th>Datum održavanja</th>
-            <th>Vidi timove koji su učestvovali na takmičenju</th>
+            <th style="background-color:orchid">Tema</th>
+            <th style="background-color:orchid">Datum održavanja</th>
+            <th style="background-color:orchid">Vidi timove koji su učestvovali na takmičenju</th>
         </tr>
     </thead>
     <tbody>

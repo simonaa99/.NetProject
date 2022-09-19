@@ -7,15 +7,29 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+header {
+    color:orchid;
+    background-color:orchid;
+}
+
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+  color:darkorchid;
+}
+a:hover {
+    color:orchid
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: white;
+    background-color: mediumorchid;
+    border-color: darkorchid;  
+}
+
+.btn-primary:hover{
+    color: white;
+    background-color: darkorchid;
+    border-color: darkorchid; 
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {

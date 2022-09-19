@@ -1,14 +1,16 @@
 ﻿@using Domain
 @model List<Tim>
-
+@{
+    ViewData["Title"] = "Timovi";
+}
 <p><a href="@Url.ActionLink("Create", "Tim")"/>Kreiraj novi tim</a></p>
 <table class="table">
     <thead>
         <tr>
-            <th>Naziv tima</th>
-            <th>Fakultet</th>
-            <th>Ažuriraj</th>
-            <th>Obriši</th>
+            <th style="background-color:orchid">Naziv tima</th>
+            <th style="background-color:orchid">Fakultet</th>
+            <th style="background-color:orchid">Ažuriraj</th>
+            <th style="background-color:orchid">Obriši</th>
         </tr>
     </thead>
     <tbody>

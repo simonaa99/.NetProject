@@ -1,18 +1,21 @@
 ﻿@using Domain
 @model List<Ucesnik>
+@{
+    ViewData["Title"] = "Učesnici";
+}
 
 <a href="@Url.ActionLink("Create", "Ucesnik")">Kreiraj novog učesnika</a>
 <p></p>
 <table class="table">
     <thead>
         <tr>
-            <th>Ime</th>
-            <th>Prezime</th>
-            <th>Godina studija</th>
-            <th>Mesto</th>
-            <th>Tim</th>
-            <th>Ažuriraj</th>
-            <th>Obriši</th>
+            <th style="background-color:orchid">Ime</th>
+            <th style="background-color:orchid">Prezime</th>
+            <th style="background-color:orchid">Godina studija</th>
+            <th style="background-color:orchid">Mesto</th>
+            <th style="background-color:orchid">Tim</th>
+            <th style="background-color:orchid">Ažuriraj</th>
+            <th style="background-color:orchid">Obriši</th>
         </tr>
     </thead>
     <tbody>

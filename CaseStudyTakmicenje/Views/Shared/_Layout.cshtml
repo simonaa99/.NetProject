@@ -9,9 +9,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CaseStudyTakmičenje</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="color:white">CaseStudyTakmičenje</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,25 +21,25 @@
                         @if (ViewBag.IsLoggedIn != null && ViewBag.IsLoggedIn == true)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Početna</a>
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" style="color:white">Početna</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Ucesnik" asp-action="Index">Učesnik</a>
+                                <a class="nav-link" asp-area="" asp-controller="Ucesnik" asp-action="Index" style="color:white">Učesnik</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Tim" asp-action="Index">Tim</a>
+                                <a class="nav-link" asp-area="" asp-controller="Tim" asp-action="Index" style="color:white">Tim</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Takmicenje" asp-action="Index">Takmičenje</a>
+                                <a class="nav-link" asp-area="" asp-controller="Takmicenje" asp-action="Index" style="color:white">Takmičenje</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Authentication" asp-action="Logout">Logout</a>
+                                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="Logout" style="color:white" >Logout</a>
                             </li>
                         }
                         else
                         {
                              <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Authentication" asp-action="Login">Login</a>
+                                <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="Login" style="color:white">Login</a>
                             </li>
                         }
                         
@@ -57,7 +57,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - CaseStudyTakmicenje - <a asp-area="" asp-controller="Home" asp-action="Index">Početna</a>
+            &copy; 2022 - <a asp-area="" asp-controller="Home" asp-action="Index">Početna</a>, Adresa Jove Ilić 154, Beograd
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

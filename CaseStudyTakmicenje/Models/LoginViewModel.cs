@@ -8,9 +8,9 @@ namespace CaseStudyTakmicenje.Models
 {
     public class LoginViewModel
     {
-        [Required(ErrorMessage = "Obavezno polje")]
+        [Required(ErrorMessage = "Username polje je obavezno!")]
         public string Username { get; set; }
-        [Required(ErrorMessage = "Obavezno polje")]
+        [Required(ErrorMessage = "Password polje je obavezno!")]
         public string Password { get; set; }
     }
 }
